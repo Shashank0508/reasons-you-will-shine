@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reasons You’ll Shine, Bhoomika ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #fdf2ff, #f1fbff, #fdf6e9);
+      --accent: #f97316;
+      --accent-soft: #f97316;
+      --card-bg: #ffffff;
+      --card-border: rgba(15, 23, 42, 0.06);
+      --text-main: #111827;
+      --text-subtle: #6b7280;
+      --card-width: 220px;
+      --card-height: 160px;
+      --transition-fast: 0.5s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: var(--bg-gradient) fixed;
+      color: var(--text-main);
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 32px 12px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1100px;
+      border-radius: 28px;
+      background: radial-gradient(circle at top left, #ffffff, #f9fafb 55%);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.12);
+      padding: 28px 26px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shell::before,
+    .shell::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .shell::before {
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.35), transparent 70%);
+      top: -140px;
+      right: -60px;
+    }
+
+    .shell::after {
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 70%);
+      bottom: -120px;
+      left: -40px;
+    }
+
+    .top {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .title-block {
+      max-width: 620px;
+    }
+
+    .title-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top left, #fefce8, #fdf2ff);
+      color: var(--accent-soft);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .title-pill span.emoji {
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .title-highlight {
+      background: linear-gradient(120deg, #f97316, #fb7185, #eab308);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-subtle);
+      max-width: 500px;
+    }
+
+    .badge-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      margin-left: auto;
+    }
+
+    .tiny-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(148, 163, 184, 1);
+    }
+
+    .confidence-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 11px;
+      color: #374151;
+    }
+
+    .confidence-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #22c55e, #16a34a);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+
+    .card-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .card-wrapper {
+      perspective: 1200px;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      height: var(--card-height);
+      cursor: pointer;
+      border-radius: 20px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      overflow: hidden;
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 18px;
+      border-radius: inherit;
+      border: 1px solid var(--card-border);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .card-front {
+      background: radial-gradient(circle at top left, #ffffff 0, #f9fafb 60%);
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+
+    .card-back {
+      background: radial-gradient(circle at top left, #fefce8 0, #fdf2ff 55%);
+      text-align: left;
+      transform: rotateY(180deg);
+      opacity: 0;
+    }
+
+    .card.flipped .card-front {
+      transform: rotateY(-180deg);
+      opacity: 0;
+    }
+
+    .card.flipped .card-back {
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+
+    .card-number {
+      font-size: 38px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f97316, #fb7185);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.95);
+      margin-bottom: 4px;
+    }
+
+    .card-hint {
+      font-size: 11px;
+      color: rgba(156, 163, 175, 0.95);
+    }
+
+    .card-message {
+      font-size: 15px;
+      line-height: 1.4;
+      color: #374151;
+    }
+
+    .card-footer {
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .bottom-message {
+      position: relative;
+      z-index: 1;
+      margin-top: 10px;
+      padding: 16px 14px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: radial-gradient(circle at top left, #eef2ff, #fdf2ff);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .bottom-text-main {
+      font-size: 14px;
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .bottom-text-sub {
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .bottom-chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #374151;
+      background: radial-gradient(circle at top left, #fefce8, #e0f2fe);
+    }
+
+    .confetti-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 7px;
+      height: 14px;
+      border-radius: 2px;
+      opacity: 0;
+      animation: confetti-fall 900ms ease-out forwards;
+      transform-origin: center;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) rotateZ(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(var(--dx), var(--dy), 0) rotateZ(var(--rot));
+      }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 16px 10px 20px;
+      }
+
+      .shell {
+        padding: 18px 14px 16px;
+        border-radius: 22px;
+      }
+
+      .title-block {
+        max-width: 100%;
+      }
+
+      .badge-stack {
+        align-items: flex-start;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card {
+        height: 160px;
+      }
+
+      .card-message {
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 13px;
+      }
+
+      .bottom-message {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <section class="top">
+      <div class="title-block">
+        <div class="title-pill">
+          <span class="emoji">⭐</span>
+          <span>Reasons you’ll absolutely shine</span>
+        </div>
+        <h1>
+          Hey <span class="title-highlight">Bhoomika</span>, here are
+          <span class="title-highlight">15 reasons</span> you’ll shine ✨
+        </h1>
+        <p class="subtitle">
+          You’re stepping out on your own for a while — which is brave and big.
+          These are just quiet reminders of why you’ll handle it better than you think.
+        </p>
+      </div>
+
+      <div class="badge-stack">
+        <span class="tiny-label">Tonight’s forecast</span>
+        <div class="confidence-tag">
+          <span class="confidence-dot"></span>
+          <span>100% chance you’ve got this</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-grid" id="card-grid">
+      <!-- Cards will be injected by JavaScript -->
+    </section>
+
+    <section class="bottom-message">
+      <div>
+        <p class="bottom-text-main">You’re going to be okay. More than okay.</p>
+        <p class="bottom-text-sub">
+          I’m really proud of you for doing this — for trusting yourself enough to
+          live on your own for a bit and figure things out your way.
+        </p>
+      </div>
+      <div class="bottom-chip">Always cheering for you</div>
+    </section>
+  </div>
+
+  <script>
+    const reasons = [
+      "You’re brave enough to try living on your own, even if it feels scary.",
+      "You figure things out step by step — you don’t need it all perfect on day one.",
+      "You’ve handled change before, and this is just another version of that.",
+      "You notice small things, which will help you build a space that actually feels like yours.",
+      "You’re good at taking care of people — and you’ll learn to include yourself in that.",
+      "You already know how to be responsible; this is just a new stage to use that.",
+      "You may overthink, but you still show up and do the hard things anyway.",
+      "You’re better at organising your life than you give yourself credit for.",
+      "You’re not afraid to ask questions or ask for help when you really need it.",
+      "You adjust to new routines faster than you realise.",
+      "You’ll slowly find your own little comforts and habits in this new place.",
+      "You won’t be alone — you carry your people, your memories, and your strength with you.",
+      "You’ve already survived harder days than the ones ahead of you.",
+      "Every week away will quietly grow your confidence, even if you don’t see it right away.",
+      "This isn’t you leaving everything behind — it’s you adding something new to who you are."
+    ];
+
+    const grid = document.getElementById("card-grid");
+    const confettiLayer = document.getElementById("confetti-container");
+
+    function createCard(index, text) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "card-wrapper";
+
+      const card = document.createElement("div");
+      card.className = "card";
+      card.setAttribute("data-index", index);
+
+      const inner = document.createElement("div");
+      inner.className = "card-inner";
+
+      const front = document.createElement("div");
+      front.className = "card-face card-front";
+      front.innerHTML = `
+        <div class="card-label">Reason</div>
+        <div class="card-number">${index + 1}</div>
+        <div class="card-hint">Tap to flip</div>
+      `;
+
+      const back = document.createElement("div");
+      back.className = "card-face card-back";
+      back.innerHTML = `
+        <div class="card-message">${text}</div>
+        <div class="card-footer">This was always true about you.</div>
+      `;
+
+      inner.appendChild(front);
+      inner.appendChild(back);
+      card.appendChild(inner);
+      wrapper.appendChild(card);
+
+      card.addEventListener("click", () => {
+        const isFlipped = card.classList.toggle("flipped");
+        if (isFlipped) {
+          triggerConfettiAtCard(card);
+        }
+      });
+
+      grid.appendChild(wrapper);
+    }
+
+    function triggerConfettiAtCard(card) {
+      const rect = card.getBoundingClientRect();
+      const containerRect = confettiLayer.getBoundingClientRect();
+
+      const centerX = rect.left + rect.width / 2 - containerRect.left;
+      const centerY = rect.top + rect.height / 2 - containerRect.top;
+
+      const pieces = 26;
+      const colors = [
+        "#f97316",
+        "#fb7185",
+        "#eab308",
+        "#38bdf8",
+        "#22c55e",
+        "#a855f7"
+      ];
+
+      for (let i = 0; i < pieces; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti-piece";
+
+        const angle = (Math.PI * 2 * i) / pieces;
+        const distance = 80 + Math.random() * 70;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        const rot = (Math.random() * 360 - 180).toFixed(1) + "deg";
+
+        piece.style.left = `${centerX}px`;
+        piece.style.top = `${centerY}px`;
+        piece.style.backgroundColor =
+          colors[Math.floor(Math.random() * colors.length)];
+        piece.style.setProperty("--dx", dx + "px");
+        piece.style.setProperty("--dy", dy + "px");
+        piece.style.setProperty("--rot", rot);
+
+        confettiLayer.appendChild(piece);
+
+        setTimeout(() => {
+          piece.remove();
+        }, 900);
+      }
+    }
+
+    reasons.forEach((reason, index) => createCard(index, reason));
+  </script>
+</body>
+</html>
+
+
